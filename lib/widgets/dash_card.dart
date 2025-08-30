@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../screen/subcategory_screen.dart'; // 🔹 Import your subcategory page
 
 class CategoriesBody extends StatelessWidget {
-  final List<String> categories = ["category 1", "category 2", "category 3"];
+  final List<String> categories = ["Category 1", "Category 2", "Category 3"];
 
   @override
   Widget build(BuildContext context) {
@@ -9,27 +10,39 @@ class CategoriesBody extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       itemCount: categories.length,
       itemBuilder: (context, index) {
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          margin: EdgeInsets.symmetric(vertical: 8),
-          child: Container(
-            height: 120,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              image: DecorationImage(
-                image: AssetImage("assets/images/600x300.png"),
-                fit: BoxFit.cover,
+        return GestureDetector(
+          onTap: () {
+            // 🔹 Navigate to SubCategoryScreen
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SubCategoryScreen(categoryName: categories[index]),
               ),
+            );
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-            alignment: Alignment.bottomLeft,
-            padding: EdgeInsets.all(12),
-            child: Text(
-              categories[index],
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            margin: EdgeInsets.symmetric(vertical: 8),
+            child: Container(
+              height: 120,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/600x300.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.all(12),
+              child: Text(
+                categories[index],
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
