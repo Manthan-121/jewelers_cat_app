@@ -6,15 +6,17 @@ class FooterMenu extends StatelessWidget {
   final Function(int) onTap;
 
   const FooterMenu({Key? key, required this.selectedIndex, required this.onTap})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed, // 🔹 All items visible
+      backgroundColor: Colors.white, // 🔹 White footer background
       currentIndex: selectedIndex,
       onTap: onTap,
       selectedItemColor: AppColors.primary,
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: Colors.black54,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/dash_card.dart';
 import '../widgets/footer_menu.dart';
 import '../utils/colors.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,6 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (index == 1) {
+      // 🔹 Open Profile
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+      );
+    }
+    // else if (index == 2) { open wishlist }
+    // else if (index == 3) { open cart }
   }
 
   @override
